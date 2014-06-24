@@ -9,6 +9,14 @@ Right now, you can (re)use this library by adding a git submodule to your git pr
 
     git submodule add git@github.com:cegeka/rest-scenarios.git
 
+There's [an open issue](https://github.com/cegeka/rest-scenarios/issues/2) to deploy to Cegeka's public nexus repository so you'd be able to simply add a maven dependency that would look like this
+
+    <dependency>
+       <groupId>be.cegeka</groupId>
+       <artifactId>rest-scenarios</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
 ## Concepts
 ### Steps
 Write a Step for every resource you have.
