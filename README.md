@@ -21,10 +21,22 @@ There's [an open issue](https://github.com/cegeka/rest-scenarios/issues/2) to de
 ### Steps
 Write a Step for every resource you have.
 
+Let's say you have a resource that you can use to manage Books (I know, "very original"). Your BookStep would be used somewhat like this:
+
+    // create a book and keep the created id
+    Optional<String> bookId = new Bookstep(baseResource).withBookRepresentation(aBookRepresentation).post();
+    // get all books
+    BookRepresentation[] allBooks = new BookStep(baseResource).get(BookRepresentation[].class);
+    // Update a specific book
+    new BookStep(baseResource).withBookRepresentation(anUpdatedBookRepresentation).put(bookId);
+    // Delete a specific book
+    new BookStep(baseResource).delete(bookId);
+    
+
 ### Scenarios
 Scenario's typically contain a sequence of Steps that should provide a completed state of your application.
 
 For example, you want to create a Book, but a Book requires an existing Author.
-So you'll first call AuthorStep.post(), and then BookStep.post() and you'll have set up Book with an Author this way.
+So you'll first call `authorStep.post()`, and then `bookStep.post()` and you'll have set up Book with an Author this way.
 
 Scenario's also typically contain assertions that verify the completed state of your application.
